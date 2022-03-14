@@ -105,7 +105,6 @@ config BR2_powerpc_8540
 config BR2_powerpc_8548
 	bool "8548 / e500v2"
 	depends on BR2_powerpc
-	select BR2_POWERPC_CPU_HAS_SPE
 config BR2_powerpc_e300c2
 	bool "e300c2"
 	depends on BR2_powerpc
