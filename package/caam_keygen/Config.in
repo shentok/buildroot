@@ -1,0 +1,5 @@
+config BR2_PACKAGE_CAAM_KEYGEN
+    bool "caam_keygen"
+    select BR2_PACKAGE_OPENSSL
+    help
+      CAAM Key Generation tool for secure key management.
