@@ -8,11 +8,21 @@
             "name": "Launch imx8mp-evk",
             "type": "cppdbg",
             "request": "launch",
-            "program": "output/build/uboot-2026.04/spl/u-boot-spl",
+            "program": "output/build/linux-6.12.16/vmlinux",
             "cwd": "${workspaceFolder}",
             "miDebuggerPath": "aarch64-linux-gnu-gdb",
             "miDebuggerServerAddress": "localhost:1234",
             "setupCommands": [
+                {
+                    "description": "Add u-boot symbol file",
+                    "text": "add-symbol-file ${workspaceFolder}/output/build/uboot-2026.04/u-boot 0xffef9000",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Add A-TF symbol file",
+                    "text": "add-symbol-file ${workspaceFolder}/output/build/arm-trusted-firmware-v2.12/build/imx8mp/debug/bl31/bl31.elf",
+                    "ignoreFailures": false
+                },
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
