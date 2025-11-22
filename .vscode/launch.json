@@ -8,7 +8,7 @@
             "name": "Launch imx8mp-evk",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/u-boot",
+            "program": "output/build/uboot-2026.04/spl/u-boot-spl",
             "cwd": "${workspaceFolder}",
             "miDebuggerPath": "aarch64-linux-gnu-gdb",
             "miDebuggerServerAddress": "localhost:1234",
