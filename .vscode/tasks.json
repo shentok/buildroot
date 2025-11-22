@@ -1,0 +1,60 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Prepare SD card",
+      "type": "shell",
+      "command": "qemu-img resize --format raw output/images/sdcard.img 512M",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run imx8mp-evk",
+      "type": "shell",
+      "command": "echo 'QEMU RTOSdemo started'; ~/Projects/qemu/build-full/qemu-system-aarch64 -M imx8mp-evk,boot-mode=3 -smp 1 -bios ${env:HOME}/Projects/imx8mp/imx8mp-boot.rom -serial none -serial vc -drive file=output/images/sdcard.img,if=sd,format=raw,bus=1 -icount shift=auto -trace memory_region_ops__* -s -S",
+      "isBackground": true,
+      "dependsOn": ["Prepare SD card"],
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "QEMU RTOSdemo started",
+          }
+        }
+      ]
+    },
+    {
+      "label": "Run ucp1020",
+      "type": "shell",
+      "command": "echo 'QEMU RTOSdemo started'; ~/Projects/qemu/build-full/qemu-system-ppc -M mpc8544ds -m 1G -dtb output/images/ucp1020.dtb -drive id=mydrive,if=pflash,file=output/images/nor.img,format=raw -device sparse-mem,baseaddr=0xffd00000,length=256000,priority=1 -serial vc -parallel none -trace ppce500_* -trace memory_region_ops_* -s -S",
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": ".",
+              "file": 1,
+              "location": 2,
+              "message": 3
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".",
+            "endsPattern": "QEMU RTOSdemo started",
+          }
+        }
+      ]
+    }
+  ]
+}
