@@ -8,7 +8,7 @@
             "name": "Launch imx8mp-evk",
             "type": "cppdbg",
             "request": "launch",
-            "program": "output/build/linux-6.18.2/vmlinux",
+            "program": "output/build/linux-6.12.16/vmlinux",
             "cwd": "${workspaceFolder}",
             "miDebuggerPath": "aarch64-linux-gnu-gdb",
             "miDebuggerServerAddress": "localhost:1234",
