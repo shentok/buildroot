@@ -14,6 +14,11 @@
             "miDebuggerServerAddress": "localhost:1234",
             "setupCommands": [
                 {
+                    "description": "Add u-boot-spl symbol file",
+                    "text": "add-symbol-file ${workspaceFolder}/output/build/uboot-2026.04/spl/u-boot-spl",
+                    "ignoreFailures": false
+                },
+                {
                     "description": "Add u-boot symbol file",
                     "text": "add-symbol-file ${workspaceFolder}/output/build/uboot-2026.04/u-boot 0xffef9000",
                     "ignoreFailures": false
